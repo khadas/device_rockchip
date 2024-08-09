@@ -4,6 +4,10 @@ menuconfig RK_BUILDROOT
 	bool "Buildroot"
 	default y
 
+config KHADAS
+	bool "Khadas buildroot config"
+	default n
+
 if RK_BUILDROOT
 
 config RK_BUILDROOT_BASE_CFG
@@ -24,6 +28,7 @@ config RK_BUILDROOT_BASE_CFG
 config RK_BUILDROOT_CFG
 	string
 	default "rockchip_${RK_CHIP_FAMILY}" if RK_BUILDROOT_BASE_CFG = ""
+	default "khadas_${RK_BUILDROOT_BASE_CFG}" if KHADAS
 	default "rockchip_${RK_BUILDROOT_BASE_CFG}"
 
 endif # Buildroot
