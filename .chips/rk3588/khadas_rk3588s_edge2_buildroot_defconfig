@@ -1,0 +1,8 @@
+KHADAS=y
+RK_BUILDROOT_BASE_CFG="rk3588s_edge2"
+RK_ROOTFS_HOSTNAME_CUSTOM=y
+RK_ROOTFS_HOSTNAME="Edge2"
+//RK_UBOOT_CFG="khadas-edge2-rk3588s"
+RK_KERNEL_CFG="khadas_edge2_defconfig"
+RK_KERNEL_DTS_NAME="rk3588s-khadas-edge2"
+RK_USE_FIT_IMG=y
