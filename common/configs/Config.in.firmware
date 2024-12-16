@@ -56,4 +56,9 @@ endmenuconfig # Misc
 config RK_USE_FIT_IMG
 	bool "use FIT (Flattened Image Tree) image"
 
+config KHADAS_COMPRESS_IMG
+	bool "Compress image in xz formate."
+	help
+	  Compress images or not.
+
 endmenu # Firmware

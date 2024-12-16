@@ -121,6 +121,19 @@ do_build_updateimg()
 	ln -rsf "$IMAGE_DIR/update.img" "$OUT_DIR"
 	ln -rsf "$IMAGE_DIR/update.img" "$TARGET"
 
+	# Change image name
+	BOARD_NAME="edge2"
+	ROOTFS_NAME=`readlink $RK_OUTDIR/rootfs`
+	DATE=`date +'%y%m%d'`
+	IMAGE_NAME="$BOARD_NAME-$ROOTFS_NAME-$DATE.img"
+	cp $IMAGE_DIR/update.img $RK_OUTDIR/$IMAGE_NAME
+	# Compress img
+	if [ $KHADAS_COMPRESS_IMG ]; then
+		notice "\nCompressing image ...\n"
+		xz -zkfv  -T 4 $RK_OUTDIR/$IMAGE_NAME
+		notice "\nImage compress finish\n"
+	fi
+
 	if echo "$TYPE" | grep -wq "ab"; then
 		ln -sf "$(basename "$TARGET")" \
 			"$RK_FIRMWARE_DIR/${TYPE/-ab/}.img"
